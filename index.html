@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Table</title>
+</head>
+<style>
+    body
+        {
+  background-image: linear-gradient(to right,lavender,rgb(95, 199, 227));
+    }
+    button{
+        background-color:aqua;
+    }
+</style>
+<body>
+    <center>
+    <table id="dynamic-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>USN</th>
+                <th>Email</th>
+                <th>college</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="name[]"></td>
+                <td><input type="USN" name="usn[]"></td>
+                <td><input type="email" name="email[]"></td>
+                <td><input type="college" name="college[]"></td>
+                <td><button type="button" onclick="removeRow(this)">Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" onclick="addRow()">Add Row</button>
+
+    <script>
+        function addRow() {
+            var table = document.getElementById("dynamic-table").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+            cell1.innerHTML = '<input type="text" name="name[]">';
+            cell2.innerHTML = '<input type="email" name="usn[]">';
+            cell3.innerHTML = '<input type="email" name="email[]">';
+            cell4.innerHTML = '<input type="email" name="college[]">';
+            cell5.innerHTML = '<button type="button" onclick="removeRow(this)">Remove</button>';
+        }
+
+        function removeRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+    </center>
+</body>
+</html>
